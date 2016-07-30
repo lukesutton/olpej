@@ -33,10 +33,12 @@ class ViewController: UIViewController {
             .alignment(.Fill),
             .axis(.Horizontal),
             .distribution(.FillEqually),
-            .frame(x: 20, y: 20, width: 300, height: 400)
+            .frame(x: 20, y: 20, width: 300, height: 400),
+            .centerX(),
+            .centerY()
         ).append([button1, button2])
         
-        view.addSubview(stack.render())
+        stack.render(to: view)
     }
 
     override func didReceiveMemoryWarning() {

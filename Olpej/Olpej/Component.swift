@@ -25,7 +25,7 @@ public func ==<A>(lhs: ComponentIdentifier<A>, rhs: ComponentIdentifier<A>) -> B
 }
 
 public protocol ComponentType {
-    func render() -> UIView
+    func render(to targetView: UIView?) -> UIView
     var hashValue: Int { get }
 }
 
@@ -62,13 +62,14 @@ public func ==<A>(lhs: Component<A>, rhs: Component<A>) -> Bool {
 }
 
 extension Component {
-    public func render() -> UIView {
+    public func render(to targetView: UIView? = nil) -> UIView {
         let view = View()
+        targetView?.op_addSubview(view)
         for attr in attributes {
             attr.update(.update, view)
         }
-        for component in children {
-            view.op_addSubview(component.render())
+        for child in children {
+            child.render(to: view)
         }
         return view
     }

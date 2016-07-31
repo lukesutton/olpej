@@ -11,6 +11,7 @@
 		59533B2E1D364AED0043AD05 /* Properties-View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59533B2D1D364AED0043AD05 /* Properties-View.swift */; };
 		59533B301D364C5B0043AD05 /* UIStackView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59533B2F1D364C5B0043AD05 /* UIStackView+Utils.swift */; };
 		597208C71D4DB0EF00F028DA /* Properties-AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597208C61D4DB0EF00F028DA /* Properties-AutoLayout.swift */; };
+		597208C91D4DC06900F028DA /* Properties-Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597208C81D4DC06900F028DA /* Properties-Label.swift */; };
 		59C2DD741D2E0DAB00552395 /* Olpej.h in Headers */ = {isa = PBXBuildFile; fileRef = 59C2DD731D2E0DAB00552395 /* Olpej.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		59C2DD7B1D2E0DAC00552395 /* Olpej.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C2DD701D2E0DAB00552395 /* Olpej.framework */; };
 		59C2DD801D2E0DAC00552395 /* OlpejTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C2DD7F1D2E0DAC00552395 /* OlpejTests.swift */; };
@@ -36,6 +37,7 @@
 		59533B2D1D364AED0043AD05 /* Properties-View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Properties-View.swift"; sourceTree = "<group>"; };
 		59533B2F1D364C5B0043AD05 /* UIStackView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Utils.swift"; sourceTree = "<group>"; };
 		597208C61D4DB0EF00F028DA /* Properties-AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Properties-AutoLayout.swift"; sourceTree = "<group>"; };
+		597208C81D4DC06900F028DA /* Properties-Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Properties-Label.swift"; sourceTree = "<group>"; };
 		59C2DD701D2E0DAB00552395 /* Olpej.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Olpej.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C2DD731D2E0DAB00552395 /* Olpej.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Olpej.h; sourceTree = "<group>"; };
 		59C2DD751D2E0DAB00552395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				59C2DD8A1D2E0F0D00552395 /* Property.swift */,
 				59533B2F1D364C5B0043AD05 /* UIStackView+Utils.swift */,
 				59C2DD8E1D2E102E00552395 /* UIView+Utils.swift */,
+				597208C81D4DC06900F028DA /* Properties-Label.swift */,
 			);
 			path = Olpej;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				59C2DD8D1D2E0F4800552395 /* Component.swift in Sources */,
 				59533B301D364C5B0043AD05 /* UIStackView+Utils.swift in Sources */,
 				597208C71D4DB0EF00F028DA /* Properties-AutoLayout.swift in Sources */,
+				597208C91D4DC06900F028DA /* Properties-Label.swift in Sources */,
 				5919CDDB1D330D3400B84EC3 /* Properties-StackView.swift in Sources */,
 				59C2DD931D2E12AA00552395 /* Patching.swift in Sources */,
 			);

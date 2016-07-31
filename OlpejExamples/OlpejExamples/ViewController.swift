@@ -13,6 +13,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let label1 = Olpej.label(
+            .identifier("label-1"),
+            .text("what the heck man"),
+            .textColor(.redColor()),
+            .textAlignment(.Right),
+            .hidden(false)
+        )
         
         let button1 = Olpej.button(
             .identifier("button-1"),
@@ -31,14 +39,14 @@ class ViewController: UIViewController {
         let stack = Olpej.stackView(
             .identifier("stack"),
             .alignment(.Fill),
-            .axis(.Horizontal),
+            .axis(.Vertical),
             .distribution(.FillEqually),
             .frame(x: 20, y: 20, width: 300, height: 400),
             .pinTop(),
             .pinLeft(),
             .pinRight(),
             .pinBottom()
-        ).append([button1, button2])
+        ).append([label1, button1, button2])
         
         stack.render(to: view)
     }

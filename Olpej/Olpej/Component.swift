@@ -76,15 +76,63 @@ extension Component {
 }
 
 public func view(identifier: ComponentIdentifier<UIView>, _ attributes: Property<UIView>...) -> Component<UIView> {
-    return Component<UIView>(identifier: identifier, attributes: attributes)
+    return Component(identifier: identifier, attributes: attributes)
 }
 
 public func button(identifier: ComponentIdentifier<UIButton>, _ attributes: Property<UIButton>...) -> Component<UIButton> {
-    return Component<UIButton>(identifier: identifier, attributes: attributes)
+    return Component(identifier: identifier, attributes: attributes)
 }
 
 public func stackView(identifier: ComponentIdentifier<UIStackView>, _ attributes: Property<UIStackView>...) -> Component<UIStackView> {
-    return Component<UIStackView>(identifier: identifier, attributes: attributes)
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func label(identifier: ComponentIdentifier<UILabel>, _ attributes: Property<UILabel>...) -> Component<UILabel> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func segmentedControl(identifier: ComponentIdentifier<UISegmentedControl>, _ attributes: Property<UISegmentedControl>...) -> Component<UISegmentedControl> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func textField(identifier: ComponentIdentifier<UITextField>, _ attributes: Property<UITextField>...) -> Component<UITextField> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func slider(identifier: ComponentIdentifier<UISlider>, _ attributes: Property<UISlider>...) -> Component<UISlider> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func switchControl(identifier: ComponentIdentifier<UISwitch>, _ attributes: Property<UISwitch>...) -> Component<UISwitch> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func activityIndicatorView(identifier: ComponentIdentifier<UIActivityIndicatorView>, _ attributes: Property<UIActivityIndicatorView>...) -> Component<UIActivityIndicatorView> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func progressView(identifier: ComponentIdentifier<UIProgressView>, _ attributes: Property<UIProgressView>...) -> Component<UIProgressView> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func pageControl(identifier: ComponentIdentifier<UIPageControl>, _ attributes: Property<UIPageControl>...) -> Component<UIPageControl> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func stepper(identifier: ComponentIdentifier<UIStepper>, _ attributes: Property<UIStepper>...) -> Component<UIStepper> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func imageView(identifier: ComponentIdentifier<UIImageView>, _ attributes: Property<UIImageView>...) -> Component<UIImageView> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func textView(identifier: ComponentIdentifier<UITextView>, _ attributes: Property<UITextView>...) -> Component<UITextView> {
+    return Component(identifier: identifier, attributes: attributes)
+}
+
+public func scrollView(identifier: ComponentIdentifier<UIScrollView>, _ attributes: Property<UIScrollView>...) -> Component<UIScrollView> {
+    return Component(identifier: identifier, attributes: attributes)
 }
 
 

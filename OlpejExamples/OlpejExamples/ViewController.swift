@@ -34,8 +34,10 @@ class ViewController: UIViewController {
             .axis(.Horizontal),
             .distribution(.FillEqually),
             .frame(x: 20, y: 20, width: 300, height: 400),
-            .centerX(),
-            .centerY()
+            .pinTop(),
+            .pinLeft(),
+            .pinRight(),
+            .pinBottom()
         ).append([button1, button2])
         
         stack.render(to: view)

@@ -12,9 +12,9 @@ public enum PropertyAction {
 public struct Property<View: UIView>: PropertyType, Equatable, Hashable {
     public let tag: String
     public let hashValue: Int
-    public let update: (PropertyAction, View) -> Void
+    public let update: (ComponentIdentifier<View>, PropertyAction, View) -> Void
     
-    public init(_ tag: String, _ hashValue: Int, update: (PropertyAction, View) -> Void) {
+    public init(_ tag: String, _ hashValue: Int, update: (ComponentIdentifier<View>, PropertyAction, View) -> Void) {
         self.tag = tag
         self.hashValue = hashValue
         self.update = update

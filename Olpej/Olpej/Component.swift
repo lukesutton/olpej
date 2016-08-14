@@ -3,7 +3,7 @@ import Foundation
 public struct ComponentIdentifier<V: UIView>: Hashable, Equatable {
     let identifier: String
 
-    public static func identifier<V: UIView>(value: String) -> ComponentIdentifier<V> {
+    public static func id<V: UIView>(value: String) -> ComponentIdentifier<V> {
         return ComponentIdentifier<V>(value)
     }
 
@@ -12,7 +12,7 @@ public struct ComponentIdentifier<V: UIView>: Hashable, Equatable {
     }
 
     public var hashValue: Int {
-        return identifier.hashValue
+        return String(V).hashValue + identifier.hashValue
     }
 }
 
@@ -31,25 +31,25 @@ public protocol ComponentType {
 
 public struct Component<View: UIView>: ComponentType, Equatable {
     public let identifier: ComponentIdentifier<View>
-    public let attributes: Set<Property<View>>
+    public let styles: [Style<View>]
+    public let directProperties: Set<Property<View>>
+    public let properties: Set<Property<View>>
     public let children: [ComponentType]
 
-    public init(identifier: ComponentIdentifier<View>, attributes: [Property<View>], children: [ComponentType] = []) {
-        self.init(identifier: identifier, attributes: Set(attributes), children: children)
-    }
-
-    public init(identifier: ComponentIdentifier<View>, attributes: Set<Property<View>>, children: [ComponentType] = []) {
-        self.identifier = identifier
-        self.attributes = attributes
+    public init(id: ComponentIdentifier<View>, styles: [Style<View>] = [], properties: [Property<View>] = [], children: [ComponentType] = []) {
+        self.identifier = id
+        self.styles = styles
+        self.directProperties = Set(properties)
+        self.properties = Set(styles.flatMap {$0.properties} + properties)
         self.children = children
     }
-    
-    public func append(children: [ComponentType]) -> Component<View> {
-        return Component<View>(identifier: self.identifier, attributes: self.attributes, children: self.children + children)
+
+    public init(id: String, styles: [Style<View>] = [], properties: [Property<View>] = [], children: [ComponentType] = []) {
+        self.init(id: .id(id), styles: styles, properties: properties, children: children)
     }
     
     public var hashValue: Int {
-        return attributes.reduce(0) {$0 &+ $1.hashValue} &+ children.reduce(0) {$0 &+ $1.hashValue}
+        return properties.reduce(0) {$0 &+ $1.hashValue} &+ children.reduce(0) {$0 &+ $1.hashValue}
     }
 }
 
@@ -65,8 +65,8 @@ extension Component {
     public func render(to targetView: UIView? = nil) -> UIView {
         let view = View()
         targetView?.op_addSubview(view)
-        for attr in attributes {
-            attr.update(.update, view)
+        for prop in properties {
+            prop.update(identifier, .update, view)
         }
         for child in children {
             child.render(to: view)
@@ -74,65 +74,3 @@ extension Component {
         return view
     }
 }
-
-public func view(identifier: ComponentIdentifier<UIView>, _ attributes: Property<UIView>...) -> Component<UIView> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func button(identifier: ComponentIdentifier<UIButton>, _ attributes: Property<UIButton>...) -> Component<UIButton> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func stackView(identifier: ComponentIdentifier<UIStackView>, _ attributes: Property<UIStackView>...) -> Component<UIStackView> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func label(identifier: ComponentIdentifier<UILabel>, _ attributes: Property<UILabel>...) -> Component<UILabel> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func segmentedControl(identifier: ComponentIdentifier<UISegmentedControl>, _ attributes: Property<UISegmentedControl>...) -> Component<UISegmentedControl> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func textField(identifier: ComponentIdentifier<UITextField>, _ attributes: Property<UITextField>...) -> Component<UITextField> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func slider(identifier: ComponentIdentifier<UISlider>, _ attributes: Property<UISlider>...) -> Component<UISlider> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func switchControl(identifier: ComponentIdentifier<UISwitch>, _ attributes: Property<UISwitch>...) -> Component<UISwitch> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func activityIndicatorView(identifier: ComponentIdentifier<UIActivityIndicatorView>, _ attributes: Property<UIActivityIndicatorView>...) -> Component<UIActivityIndicatorView> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func progressView(identifier: ComponentIdentifier<UIProgressView>, _ attributes: Property<UIProgressView>...) -> Component<UIProgressView> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func pageControl(identifier: ComponentIdentifier<UIPageControl>, _ attributes: Property<UIPageControl>...) -> Component<UIPageControl> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func stepper(identifier: ComponentIdentifier<UIStepper>, _ attributes: Property<UIStepper>...) -> Component<UIStepper> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func imageView(identifier: ComponentIdentifier<UIImageView>, _ attributes: Property<UIImageView>...) -> Component<UIImageView> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func textView(identifier: ComponentIdentifier<UITextView>, _ attributes: Property<UITextView>...) -> Component<UITextView> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-public func scrollView(identifier: ComponentIdentifier<UIScrollView>, _ attributes: Property<UIScrollView>...) -> Component<UIScrollView> {
-    return Component(identifier: identifier, attributes: attributes)
-}
-
-

@@ -10,7 +10,7 @@ extension Property {
     }
 
     private static func constraint<T: UIView>(name: String, builder: (T, UIView) -> NSLayoutConstraint) -> Property<T> {
-        return Property<T>("view.\(name)", 0) { mode, view in
+        return Property<T>("view.\(name)", 0) { id, mode, view in
             switch(mode) {
             case .remove:
                 findConstraint(name, inView: view)?.active = false
@@ -21,7 +21,7 @@ extension Property {
                 else if let superview = view.superview {
                     view.translatesAutoresizingMaskIntoConstraints = false
                     let constraint = builder(view, superview)
-                    constraint.identifier = name
+                    constraint.identifier = "\(id.identifier).\(name)"
                     superview.addConstraint(constraint)
                 }
             }
